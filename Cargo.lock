@@ -1553,7 +1553,7 @@ checksum = "c3d6831663a5098ea164f89cff59c6284e95f4e3c76ce9848d4529f5ccca9bde"
 [[package]]
 name = "ranim"
 version = "0.1.0-alpha.12"
-source = "git+https://github.com/AzurIce/ranim?branch=enhance-composed-items#3cf1156aa42e4d7acaad549ac998594a48b7224c"
+source = "git+https://github.com/AzurIce/ranim?branch=enhance-composed-items#11d789483ff7ca91607afae5fb42861b9af82f63"
 dependencies = [
  "anyhow",
  "async-channel",
@@ -1577,7 +1577,7 @@ dependencies = [
 [[package]]
 name = "ranim-macros"
 version = "0.1.0-alpha.12"
-source = "git+https://github.com/AzurIce/ranim?branch=enhance-composed-items#3cf1156aa42e4d7acaad549ac998594a48b7224c"
+source = "git+https://github.com/AzurIce/ranim?branch=enhance-composed-items#11d789483ff7ca91607afae5fb42861b9af82f63"
 dependencies = [
  "darling",
  "heck",
@@ -2132,6 +2132,46 @@ dependencies = [
  "serde_spanned",
  "toml_datetime",
  "winnow",
+]
+
+[[package]]
+name = "transform_square10"
+version = "0.1.0"
+dependencies = [
+ "itertools 0.14.0",
+ "log",
+ "pretty_env_logger",
+ "ranim",
+]
+
+[[package]]
+name = "transform_square20"
+version = "0.1.0"
+dependencies = [
+ "itertools 0.14.0",
+ "log",
+ "pretty_env_logger",
+ "ranim",
+]
+
+[[package]]
+name = "transform_square40"
+version = "0.1.0"
+dependencies = [
+ "itertools 0.14.0",
+ "log",
+ "pretty_env_logger",
+ "ranim",
+]
+
+[[package]]
+name = "transform_square5"
+version = "0.1.0"
+dependencies = [
+ "itertools 0.14.0",
+ "log",
+ "pretty_env_logger",
+ "ranim",
 ]
 
 [[package]]
