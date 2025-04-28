@@ -9,7 +9,7 @@ fn bench_scene(c: &mut Criterion, scene_name: &str) {
     let mut group = c.benchmark_group(scene_name);
     group
         .sample_size(10)
-        .measurement_time(Duration::from_secs(200));
+        .measurement_time(Duration::from_secs(1200));
     let mut bench_group = |engine: &str| {
         group.bench_with_input(BenchmarkId::new(engine, 0), &0, |b, _| {
             b.iter(|| {
@@ -33,14 +33,18 @@ fn bench_scene(c: &mut Criterion, scene_name: &str) {
 macro_rules! bench_scene {
     ($scene_name:expr) => {
         paste::paste! {
-            fn [<bench_ $scene_name>](c: &mut Criterion) {
-                bench_scene(c, $scene_name);
+            mod [<$scene_name>]{
+                use super::*;
+                fn [<bench_ $scene_name>](c: &mut Criterion) {
+                    bench_scene(c, $scene_name);
+                }
+                criterion_group!(benches, [<bench_ $scene_name>]);
             }
-            criterion_group!(benches, [<bench_ $scene_name>]);
         }
     };
 }
 
 bench_scene!("static_tiger");
+bench_scene!("static_square_matrix");
 
-criterion_main!(benches);
+criterion_main!(static_tiger::benches, static_square_matrix::benches);

@@ -19,6 +19,7 @@ dependencies = [
     { name = "janim", extra = ["gui"] },
     { name = "manim" },
     { name = "manimgl" },
+    { name = "numpy" },
     { name = "setuptools" },
 ]
 
@@ -27,6 +28,7 @@ requires-dist = [
     { name = "janim", extras = ["gui"], specifier = ">=3.0.1" },
     { name = "manim", specifier = ">=0.19.0" },
     { name = "manimgl", directory = "manim" },
+    { name = "numpy", specifier = ">=2.2.5" },
     { name = "setuptools", specifier = ">=79.0.1" },
 ]
 

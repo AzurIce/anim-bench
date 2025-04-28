@@ -5,7 +5,7 @@ use ranim::{
 };
 
 #[scene]
-pub struct StaticTigerScene;
+struct StaticTigerScene;
 
 impl TimelineConstructor for StaticTigerScene {
     fn construct(self, timeline: &RanimTimeline, _camera: &mut Rabject<CameraFrame>) {
@@ -26,10 +26,9 @@ mod test {
         render_scene(
             StaticTigerScene,
             &AppOptions {
-                pixel_size: (1920, 1080),
+                pixel_size: (1080, 1080),
                 frame_rate: 60,
-                output_dir: "./output",
-                output_filename: "Ranim.mp4",
+                output_dir: "./output/static_tiger",
                 ..Default::default()
             },
         );

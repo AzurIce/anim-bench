@@ -1,0 +1,45 @@
+use itertools::Itertools;
+use ranim::{
+    glam::DVec3,
+    items::{group::Group, vitem::Square},
+    prelude::*,
+};
+
+#[scene]
+pub struct StaticSquareMatrixScene;
+
+const N: usize = 50;
+
+impl TimelineConstructor for StaticSquareMatrixScene {
+    fn construct(self, timeline: &RanimTimeline, _camera: &mut Rabject<CameraFrame>) {
+        let buff = 0.1;
+        let size = 8.0 / N as f64 - buff;
+
+        let unit = size + buff;
+        let start = DVec3::splat(-4.0 + unit / 2.0);
+        let group = (0..N)
+            .cartesian_product(0..N)
+            .map(|(i, j)| {
+                let mut square = Square(size).build();
+                square
+                    .put_center_on(start + unit * DVec3::X * j as f64 + unit * DVec3::Y * i as f64);
+                square
+            })
+            .collect::<Group<_>>();
+        timeline.insert(group);
+        timeline.forward(1.0);
+    }
+}
+
+fn main() {
+    render_scene(
+        StaticSquareMatrixScene,
+        &AppOptions {
+            pixel_size: (1920, 1080),
+            frame_rate: 60,
+            output_dir: "./output",
+            output_filename: "Ranim.mp4",
+            ..Default::default()
+        },
+    );
+}

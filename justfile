@@ -1,6 +1,3 @@
-ranim-debug scene:
-    cargo run -p {{scene}}
-
 ranim scene:
     cargo run -p {{scene}} --release
 
@@ -12,3 +9,6 @@ manimce scene:
 
 janim scene:
     uv run janim write "./packages/{{scene}}/janim.py" -c background_color "#333333" -c fps 60 -c frame_height 8 -c pixel_width 1920 -c pixel_height 1080 -c output_dir ./output/{{scene}}
+
+gjanim scene:
+    janim write "./packages/{{scene}}/janim.py" -c background_color "#333333" -c fps 60 -c frame_height 8 -c pixel_width 1920 -c pixel_height 1080 -c output_dir ./output/{{scene}}
