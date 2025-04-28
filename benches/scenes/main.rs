@@ -3,13 +3,13 @@ use std::{
     time::Duration,
 };
 
-use criterion::{BenchmarkId, Criterion, criterion_group, criterion_main};
+use criterion::{BenchmarkId, Criterion, SamplingMode, criterion_group, criterion_main};
 
 fn bench_scene(c: &mut Criterion, scene_name: &str) {
     let mut group = c.benchmark_group(scene_name);
     group
-        .sample_size(10)
-        .measurement_time(Duration::from_secs(1200));
+        .sampling_mode(SamplingMode::Flat)
+        .sample_size(20);
     let mut bench_group = |engine: &str| {
         group.bench_with_input(BenchmarkId::new(engine, 0), &0, |b, _| {
             b.iter(|| {
