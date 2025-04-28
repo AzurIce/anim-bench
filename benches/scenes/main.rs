@@ -64,7 +64,7 @@ macro_rules! bench_scene {
     };
 }
 
-// bench_scene!("static_tiger", bench_scene);
+bench_scene!("static_tiger", bench_scene);
 bench_scene!("static_square", bench_square_scene);
 
-criterion_main!(static_square::benches);
+criterion_main!(static_tiger::benches, static_square::benches);
