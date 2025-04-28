@@ -10,7 +10,7 @@ members = ["packages/*"]
 ranim.workspace = true
 
 [workspace.dependencies]
-ranim = { path = "../ranim" }
+ranim = { git = "https://github.com/AzurIce/ranim", branch = "enhance-composed-items" }
 itertools = "0.14.0"
 
 [dev-dependencies]

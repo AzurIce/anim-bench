@@ -9,7 +9,7 @@ impl TimelineConstructor for StaticTigerScene {
     fn construct(self, timeline: &RanimTimeline, _camera: &mut Rabject<CameraFrame>) {
         let mut tiger =
             Group::<VItem>::from_svg(fs::read_to_string("assets/Ghostscript_Tiger.svg").unwrap());
-        tiger.scale_to(ScaleHint::PorportionalHeight(8.0));
+        tiger.scale_to_with_stroke(ScaleHint::PorportionalHeight(8.0));
         let _tiger = timeline.insert(tiger);
         timeline.forward(1.0);
     }
