@@ -12,11 +12,11 @@ use ranim::{
 };
 
 #[scene]
-pub struct TransformSquare5Scene;
+pub struct TransformSquare40Scene;
 
 const N: usize = 40;
 
-impl TimelineConstructor for TransformSquare5Scene {
+impl TimelineConstructor for TransformSquare40Scene {
     fn construct(self, timeline: &RanimTimeline, _camera: &mut Rabject<CameraFrame>) {
         let buff = 0.1;
         let size = 8.0 / N as f64 - buff;
@@ -55,7 +55,7 @@ fn main() {
         .filter(Some("ranim"), LevelFilter::Info)
         .init();
     render_scene(
-        TransformSquare5Scene,
+        TransformSquare40Scene,
         &AppOptions {
             pixel_size: (1920, 1080),
             frame_rate: 60,
