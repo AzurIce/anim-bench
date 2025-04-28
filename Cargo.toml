@@ -12,6 +12,8 @@ ranim.workspace = true
 [workspace.dependencies]
 ranim = { git = "https://github.com/AzurIce/ranim", branch = "enhance-composed-items" }
 itertools = "0.14.0"
+pretty_env_logger = "0.5.0"
+log = "0.4.27"
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }

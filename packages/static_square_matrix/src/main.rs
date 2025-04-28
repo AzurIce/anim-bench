@@ -1,4 +1,5 @@
 use itertools::Itertools;
+use log::LevelFilter;
 use ranim::{
     glam::DVec3,
     items::{group::Group, vitem::Square},
@@ -32,6 +33,14 @@ impl TimelineConstructor for StaticSquareMatrixScene {
 }
 
 fn main() {
+    #[cfg(debug_assertions)]
+    pretty_env_logger::formatted_timed_builder()
+        .filter(Some("ranim"), LevelFilter::Trace)
+        .init();
+    #[cfg(not(debug_assertions))]
+    pretty_env_logger::formatted_timed_builder()
+        .filter(Some("ranim"), LevelFilter::Info)
+        .init();
     render_scene(
         StaticSquareMatrixScene,
         &AppOptions {
