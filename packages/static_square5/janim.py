@@ -1,6 +1,6 @@
 from janim.imports import *
 
-N = 50
+N = 5
 
 class Janim(Timeline):
     def construct(self):

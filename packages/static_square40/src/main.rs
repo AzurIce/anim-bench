@@ -7,11 +7,11 @@ use ranim::{
 };
 
 #[scene]
-pub struct StaticSquareMatrixScene;
+pub struct StaticSquare40Scene;
 
-const N: usize = 50;
+const N: usize = 40;
 
-impl TimelineConstructor for StaticSquareMatrixScene {
+impl TimelineConstructor for StaticSquare40Scene {
     fn construct(self, timeline: &RanimTimeline, _camera: &mut Rabject<CameraFrame>) {
         let buff = 0.1;
         let size = 8.0 / N as f64 - buff;
@@ -42,7 +42,7 @@ fn main() {
         .filter(Some("ranim"), LevelFilter::Info)
         .init();
     render_scene(
-        StaticSquareMatrixScene,
+        StaticSquare40Scene,
         &AppOptions {
             pixel_size: (1920, 1080),
             frame_rate: 60,

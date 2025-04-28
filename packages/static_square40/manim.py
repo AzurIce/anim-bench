@@ -1,7 +1,7 @@
 from manimlib import *
 import numpy as np
 
-N = 50
+N = 40
 
 class Manim(Scene):
     def construct(self):

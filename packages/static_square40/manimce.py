@@ -7,7 +7,7 @@ config.background_color = "#333333"
 # config.fps = 60
 # print(config)
 
-N = 50
+N = 40
 
 class ManimCE(Scene):
     def construct(self):
