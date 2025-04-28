@@ -1,4 +1,5 @@
 output/
+.direnv/
 
 # Python-generated files
 __pycache__/
