@@ -44,7 +44,14 @@
         devShells.default =
           # It is of course perfectly OK to keep using an impure virtualenv workflow and only use uv2nix to build packages.
           # This devShell simply adds Python and undoes the dependency leakage done by Nixpkgs Python infrastructure.
-          pkgs.mkShell {
+          pkgs.mkShell rec {
+            buildInputs = with pkgs; [
+              libGL
+              vulkan-headers vulkan-loader
+              vulkan-tools vulkan-tools-lunarg
+              vulkan-extension-layer
+              vulkan-validation-layers
+            ];
             packages = with pkgs;
               [
                 # clang
@@ -55,6 +62,11 @@
                 uv
                 cairo
                 portaudio
+                ninja
+                pango
+                ffmpeg
+                typst
+                vulkan-tools
               ] ++ [ python rust-tools ]
               ++ (with pkgs.darwin.apple_sdk.frameworks;
                 pkgs.lib.optionals pkgs.stdenv.isDarwin [
@@ -78,6 +90,7 @@
             };
             shellHook = ''
               unset PYTHONPATH
+              export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${builtins.toString (pkgs.lib.makeLibraryPath buildInputs)}"
             '';
           };
       });
