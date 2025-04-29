@@ -45,13 +45,13 @@
           # It is of course perfectly OK to keep using an impure virtualenv workflow and only use uv2nix to build packages.
           # This devShell simply adds Python and undoes the dependency leakage done by Nixpkgs Python infrastructure.
           pkgs.mkShell rec {
-            buildInputs = with pkgs; [
+            buildInputs = (with pkgs; pkgs.lib.optionals pkgs.stdenv.isLinux [
               libGL
-              vulkan-headers vulkan-loader
+              vulkan-headers
               vulkan-tools vulkan-tools-lunarg
               vulkan-extension-layer
               vulkan-validation-layers
-            ];
+            ]);
             packages = with pkgs;
               [
                 # clang
