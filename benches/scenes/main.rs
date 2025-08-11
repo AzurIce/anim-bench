@@ -29,7 +29,23 @@ fn bench_square_scene(c: &mut Criterion, scene_name: &str) {
     let mut group = c.benchmark_group(scene_name);
     group.sampling_mode(SamplingMode::Linear).sample_size(10);
     let mut bench_group = |engine: &str| {
-        for n in [5, 10, 20, 40] {
+        for n in [0, 5, 10, 20, 40] {
+            if n == 0 {
+                group.bench_with_input(BenchmarkId::new(engine, n), &n, |b, _| {
+                    b.iter(|| {
+                        process::Command::new("just")
+                            .args([engine, "empty"])
+                            .stdin(Stdio::null())
+                            .stdout(Stdio::null())
+                            .stderr(Stdio::null())
+                            .spawn()
+                            .unwrap()
+                            .wait()
+                            .unwrap();
+                    });
+                });
+                continue;
+            }
             group.bench_with_input(BenchmarkId::new(engine, n), &n, |b, n| {
                 b.iter(|| {
                     process::Command::new("just")

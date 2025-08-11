@@ -10,6 +10,13 @@ use ranim::items::vitem::svg::SvgItem;
 use ranim::prelude::*;
 
 #[scene(name = "Ranim")]
+#[output(dir = "empty")]
+pub fn empty(r: &mut RanimScene) {
+    let _r_cam = r.insert_and_show(CameraFrame::default());
+    r.timelines_mut().forward(1.0);
+}
+
+#[scene(name = "Ranim")]
 #[output(dir = "static_tiger")]
 pub fn static_tiger(r: &mut RanimScene) {
     let _r_cam = r.insert_and_show(CameraFrame::default());
