@@ -5,11 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "janim[gui]>=3.0.1",
+    "janim[gui]>=3.6.0",
     "manim>=0.19.0",
     "manimgl",
     "numpy>=2.2.5",
-    "setuptools>=79.0.1",
+    "setuptools>=80.9.0",
 ]
 
 [tool.uv.sources]

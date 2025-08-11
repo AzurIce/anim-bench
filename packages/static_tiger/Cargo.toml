@@ -5,5 +5,6 @@ edition = "2024"
 
 [dependencies]
 ranim.workspace = true
+bench_scenes.workspace = true
 pretty_env_logger.workspace = true
 log.workspace = true

@@ -25,11 +25,11 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "janim", extras = ["gui"], specifier = ">=3.0.1" },
+    { name = "janim", extras = ["gui"], specifier = ">=3.6.0" },
     { name = "manim", specifier = ">=0.19.0" },
     { name = "manimgl", directory = "manim" },
     { name = "numpy", specifier = ">=2.2.5" },
-    { name = "setuptools", specifier = ">=79.0.1" },
+    { name = "setuptools", specifier = ">=80.9.0" },
 ]
 
 [[package]]
@@ -339,7 +339,7 @@ wheels = [
 
 [[package]]
 name = "janim"
-version = "3.0.1"
+version = "3.6.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
@@ -351,15 +351,15 @@ dependencies = [
     { name = "pillow" },
     { name = "psutil" },
     { name = "pyopengl" },
+    { name = "pyquaternion" },
     { name = "rich" },
-    { name = "scipy" },
     { name = "skia-pathops" },
     { name = "svgelements" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/87/bc/020cd101eaa6fd46f2d75a6b282d31c0c45beff19687e9ca250c7f856c93/janim-3.0.1.tar.gz", hash = "sha256:6bf01efe1f1e77698c4bb1fe63ccd115741a83645e0bd318c3bbc32f29a6b3b7", size = 241037 }
+sdist = { url = "https://files.pythonhosted.org/packages/d3/6d/3c140aad341a00766c3306be474302fc6279093568fdeda9e5d962daa085/janim-3.6.0.tar.gz", hash = "sha256:a53318842f27d680bed155f3941fe107a66f4dac61d6c112d4bf194208cea280", size = 261852 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/db/13bf7258b017afe52ebcaada791e2798bf09f715bcf09404d2f76c1fd72c/janim-3.0.1-py3-none-any.whl", hash = "sha256:3327df83a5e4c7d69400e4e019ab5176b3b014fda3426f8163a98274739812f8", size = 292949 },
+    { url = "https://files.pythonhosted.org/packages/f3/8a/5858b3dc34c9fddeb8ed655a4c4e8e5d72efc80c99a64b678139ea569a71/janim-3.6.0-py3-none-any.whl", hash = "sha256:ff7c0698441d25cef9318d4b2ca42edc4aa53b9681afc5152b7e2bc250557964", size = 320786 },
 ]
 
 [package.optional-dependencies]
@@ -495,7 +495,7 @@ dependencies = [
 requires-dist = [
     { name = "addict" },
     { name = "appdirs" },
-    { name = "audioop-lts" },
+    { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
     { name = "colour" },
     { name = "diskcache" },
     { name = "fonttools" },
@@ -823,6 +823,8 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/59/a7/c3e5ed55781dfe1b31eb4a2482aeae707671f3d36b0ea53a1722f4a3dfe9/pycairo-1.28.0-cp313-cp313-win32.whl", hash = "sha256:d13352429d8a08a1cb3607767d23d2fb32e4c4f9faa642155383980ec1478c24", size = 750594 },
     { url = "https://files.pythonhosted.org/packages/8b/1c/ebadd290748aff3b6bc35431114d41e7a42f40a4b988c2aaf2dfed5d8156/pycairo-1.28.0-cp313-cp313-win_amd64.whl", hash = "sha256:082aef6b3a9dcc328fa648d38ed6b0a31c863e903ead57dd184b2e5f86790140", size = 841774 },
     { url = "https://files.pythonhosted.org/packages/3e/ce/a3f5f1946613cd8a4654322b878c59f273c6e9b01dfadadd3f609070e0b9/pycairo-1.28.0-cp313-cp313-win_arm64.whl", hash = "sha256:026afd53b75291917a7412d9fe46dcfbaa0c028febd46ff1132d44a53ac2c8b6", size = 691675 },
+    { url = "https://files.pythonhosted.org/packages/96/1b/1f5da2b2e44b33a5b269ff28af710b0a7903001d9cf8a40d00fc944a5092/pycairo-1.28.0-cp314-cp314-win32.whl", hash = "sha256:d0ab30585f536101ad6f09052fc3895e2a437ba57531ea07223d0e076248025d", size = 766699 },
+    { url = "https://files.pythonhosted.org/packages/c9/91/1d5f18bd3ed469b1de8f83bfbf8bd67d23439f075151b66740fd35356190/pycairo-1.28.0-cp314-cp314-win_amd64.whl", hash = "sha256:94f2ed204999ab95a0671a0fa948ffbb9f3d6fb8731fe787917f6d022d9c1c0f", size = 868725 },
 ]
 
 [[package]]
@@ -919,6 +921,18 @@ name = "pyperclip"
 version = "1.9.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/30/23/2f0a3efc4d6a32f3b63cdff36cd398d9701d26cda58e3ab97ac79fb5e60d/pyperclip-1.9.0.tar.gz", hash = "sha256:b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310", size = 20961 }
+
+[[package]]
+name = "pyquaternion"
+version = "0.9.9"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7d/0d/3d092aa20efaedacb89c3221a92c6491be5b28f618a2c36b52b53e7446c2/pyquaternion-0.9.9.tar.gz", hash = "sha256:b1f61af219cb2fe966b5fb79a192124f2e63a3f7a777ac3cadf2957b1a81bea8", size = 15530 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/b3/d8482e8cacc8ea15a356efea13d22ce1c5914a9ee36622ba250523240bf2/pyquaternion-0.9.9-py3-none-any.whl", hash = "sha256:e65f6e3f7b1fdf1a9e23f82434334a1ae84f14223eee835190cd2e841f8172ec", size = 14361 },
+]
 
 [[package]]
 name = "pyside6"
@@ -1078,11 +1092,11 @@ wheels = [
 
 [[package]]
 name = "setuptools"
-version = "79.0.1"
+version = "80.9.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/bb/71/b6365e6325b3290e14957b2c3a804a529968c77a049b2ed40c095f749707/setuptools-79.0.1.tar.gz", hash = "sha256:128ce7b8f33c3079fd1b067ecbb4051a66e8526e7b65f6cec075dfc650ddfa88", size = 1367909 }
+sdist = { url = "https://files.pythonhosted.org/packages/18/5d/3bf57dcd21979b887f014ea83c24ae194cfcd12b9e0fda66b957c69d1fca/setuptools-80.9.0.tar.gz", hash = "sha256:f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c", size = 1319958 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0d/6d/b4752b044bf94cb802d88a888dc7d288baaf77d7910b7dedda74b5ceea0c/setuptools-79.0.1-py3-none-any.whl", hash = "sha256:e147c0549f27767ba362f9da434eab9c5dc0045d5304feb602a0af001089fc51", size = 1256281 },
+    { url = "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl", hash = "sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922", size = 1201486 },
 ]
 
 [[package]]

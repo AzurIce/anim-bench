@@ -8,3 +8,4 @@ ranim.workspace = true
 itertools.workspace = true
 pretty_env_logger.workspace = true
 log.workspace = true
+bench_scenes = { path = "../bench_scenes" }
