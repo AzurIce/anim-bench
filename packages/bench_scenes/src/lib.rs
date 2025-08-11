@@ -20,7 +20,9 @@ pub fn empty(r: &mut RanimScene) {
 #[output(dir = "static_tiger")]
 pub fn static_tiger(r: &mut RanimScene) {
     let _r_cam = r.insert_and_show(CameraFrame::default());
-    let tiger = SvgItem::new(include_str!("../../../assets/Ghostscript_Tiger.svg"));
+    let tiger = SvgItem::new(include_str!("../../../assets/Ghostscript_Tiger.svg")).with(|s| {
+        s.scale_to_with_stroke(ranim::components::ScaleHint::PorportionalY(8.0));
+    });
     r.insert_and_show(tiger);
     r.timelines_mut().forward(1.0);
 }
