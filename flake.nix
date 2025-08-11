@@ -31,7 +31,7 @@
         inherit (nixpkgs) lib;
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
-        rust-tools = pkgs.rust-bin.stable.latest.default.override {
+        rust-tools = pkgs.rust-bin.nightly.latest.default.override {
           extensions = [ "rust-src" ];
         };
 
@@ -67,15 +67,7 @@
                 ffmpeg
                 typst
                 vulkan-tools
-              ] ++ [ python rust-tools ]
-              ++ (with pkgs.darwin.apple_sdk.frameworks;
-                pkgs.lib.optionals pkgs.stdenv.isDarwin [
-                  System
-                  IOKit
-                  Security
-                  CoreFoundation
-                  AppKit
-                ]);
+              ] ++ [ python rust-tools ];
 
             env = {
               # Prevent uv from managing Python downloads

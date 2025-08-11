@@ -12,12 +12,14 @@ use ranim::prelude::*;
 #[scene(name = "Ranim")]
 #[output(dir = "static_tiger")]
 pub fn static_tiger(r: &mut RanimScene) {
+    let _r_cam = r.insert_and_show(CameraFrame::default());
     let tiger = SvgItem::new(include_str!("../../../assets/Ghostscript_Tiger.svg"));
     r.insert_and_show(tiger);
     r.timelines_mut().forward(1.0);
 }
 
 pub fn static_squares(r: &mut RanimScene, n: usize) {
+    let _r_cam = r.insert_and_show(CameraFrame::default());
     let buff = 0.1;
     let size = 8.0 / n as f64 - buff;
 
@@ -36,6 +38,7 @@ pub fn static_squares(r: &mut RanimScene, n: usize) {
 }
 
 pub fn transform_squares(r: &mut RanimScene, n: usize) {
+    let _r_cam = r.insert_and_show(CameraFrame::default());
     let buff = 0.1;
     let size = 8.0 / n as f64 - buff;
 
