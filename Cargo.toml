@@ -10,6 +10,7 @@ members = ["packages/*"]
 ranim.workspace = true
 
 [workspace.dependencies]
+# ranim = { path = "../../../ranim" }
 ranim = "0.1.1"
 bench_scenes.path = "packages/bench_scenes"
 itertools = "0.14.0"
@@ -23,3 +24,6 @@ paste = "1.0"
 [[bench]]
 name = "scenes"
 harness = false
+
+[profile.release]
+debug = true

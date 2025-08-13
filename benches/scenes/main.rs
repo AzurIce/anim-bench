@@ -1,10 +1,18 @@
 use std::process::{self, Stdio};
 
-use criterion::{BenchmarkId, Criterion, SamplingMode, criterion_group, criterion_main};
+use criterion::{
+    BenchmarkGroup, BenchmarkId, Criterion, criterion_group, criterion_main, measurement::WallTime,
+};
+
+fn configure_group(group: &mut BenchmarkGroup<'_, WallTime>) {
+    group
+        .sampling_mode(criterion::SamplingMode::Flat)
+        .sample_size(15);
+}
 
 fn bench_scene(c: &mut Criterion, scene_name: &str) {
     let mut group = c.benchmark_group(scene_name);
-    group.sampling_mode(SamplingMode::Linear).sample_size(10);
+    configure_group(&mut group);
     let mut bench_group = |engine: &str| {
         group.bench_with_input(BenchmarkId::new(engine, 0), &0, |b, _| {
             b.iter(|| {
@@ -27,7 +35,7 @@ fn bench_scene(c: &mut Criterion, scene_name: &str) {
 
 fn bench_square_scene(c: &mut Criterion, scene_name: &str) {
     let mut group = c.benchmark_group(scene_name);
-    group.sampling_mode(SamplingMode::Linear).sample_size(10);
+    configure_group(&mut group);
     let mut bench_group = |engine: &str| {
         for n in [0, 5, 10, 20, 40] {
             if n == 0 {
