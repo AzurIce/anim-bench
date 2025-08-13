@@ -1,0 +1,2 @@
+[alias]
+update-bench-data = "run --package xtask-update-bench-data"
