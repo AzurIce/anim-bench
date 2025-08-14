@@ -47,10 +47,12 @@
           pkgs.mkShell rec {
             buildInputs = (with pkgs; pkgs.lib.optionals pkgs.stdenv.isLinux [
               libGL
+              vulkan-loader
               vulkan-headers
               vulkan-tools vulkan-tools-lunarg
               vulkan-extension-layer
               vulkan-validation-layers
+              openssl
             ]);
             packages = with pkgs;
               [

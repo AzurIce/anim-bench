@@ -52,14 +52,15 @@
 
 #v(0.5em)
 
-// #perfdiagram(
-//   "linux",
-//   "static_square",
-//   [各引擎在 Linux 平台下以不同 $N$ 为输入的
+#perfdiagram(
+  "0.1.1",
+  "linux",
+  "static_square",
+  [各引擎在 Linux 平台下以不同 $N$ 为输入的
 
-//     静态场景渲染耗时数据比较],
-//   "static-square-perf-linux",
-// )
+    静态场景渲染耗时数据比较],
+  "static-square-perf-linux",
+)
 
 // #v(0.5em)
 
