@@ -1,7 +1,7 @@
 #import "@preview/lilaq:0.3.0" as lq
 
 #let engines = ("Manim", "JAnim", "Ranim", "ManimCE")
-#let platforms = ("windows", "linux", "mac")
+#let platforms = ("windows", "linux", "macos")
 #let json_file = (version, platform, scene, engine, input) => {
   json("assets/data/" + version + "/" + platform + "/criterion/" + scene + "/" + engine + "/" + str(input) + "/new/estimates.json")
 }
@@ -63,11 +63,12 @@
 
 // #v(0.5em)
 
-// #perfdiagram(
-//   "mac",
-//   "static_square",
-//   [各引擎在 Mac 平台下以不同 $N$ 为输入的
+#perfdiagram(
+  "0.1.1",
+  "macos",
+  "static_square",
+  [各引擎在 Mac 平台下以不同 $N$ 为输入的
 
-//     静态场景渲染耗时数据比较],
-//   "static-square-perf-mac",
-// )
+    静态场景渲染耗时数据比较],
+  "static-square-perf-mac",
+)
