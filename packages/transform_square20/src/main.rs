@@ -16,5 +16,5 @@ fn main() {
     pretty_env_logger::formatted_timed_builder()
         .filter(Some("ranim"), LevelFilter::Info)
         .init();
-    render_scene(transform_square_20_scene);
+    ranim::cmd::render_scene(&transform_square_20::scene(), 2);
 }

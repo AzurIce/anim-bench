@@ -1,5 +1,6 @@
 output/
 .direnv/
+latex_cache
 
 # Python-generated files
 __pycache__/

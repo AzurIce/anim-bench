@@ -1,8 +1,6 @@
 use std::time::Instant;
 
 use log::LevelFilter;
-use ranim::prelude::*;
-use bench_scenes::empty_scene;
 
 fn main() {
     let t = Instant::now();
@@ -14,6 +12,6 @@ fn main() {
     pretty_env_logger::formatted_timed_builder()
         .filter(Some("ranim"), LevelFilter::Info)
         .init();
-    render_scene(empty_scene);
+    ranim::cmd::render_scene(&bench_scenes::empty::scene(), 2);
     println!("total_cost: {:?}", t.elapsed());
 }

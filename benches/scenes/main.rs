@@ -1,7 +1,7 @@
 use std::process::{self, Stdio};
 
 use criterion::{
-    BenchmarkGroup, BenchmarkId, Criterion, criterion_group, criterion_main, measurement::WallTime,
+    criterion_group, criterion_main, measurement::WallTime, BenchmarkGroup, BenchmarkId, Criterion,
 };
 
 fn configure_group(group: &mut BenchmarkGroup<'_, WallTime>) {
@@ -91,9 +91,11 @@ macro_rules! bench_scene {
 bench_scene!("static_tiger", bench_scene);
 bench_scene!("static_square", bench_square_scene);
 bench_scene!("transform_square", bench_square_scene);
+bench_scene!("animating_pi", bench_scene);
 
 criterion_main!(
     static_tiger::benches,
     static_square::benches,
     transform_square::benches,
+    animating_pi::benches,
 );

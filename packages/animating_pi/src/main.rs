@@ -9,5 +9,5 @@ fn main() {
     pretty_env_logger::formatted_timed_builder()
         .filter(Some("ranim"), LevelFilter::Info)
         .init();
-    ranim::cmd::render_scene(&bench_scenes::static_tiger::scene(), 2);
+    ranim::cmd::render_scene(&bench_scenes::animating_pi::scene(), 2);
 }

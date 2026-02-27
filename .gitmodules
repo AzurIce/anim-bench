@@ -1,3 +1,9 @@
 [submodule "manim"]
 	path = manim
 	url = https://github.com/3b1b/manim.git
+[submodule "JAnim"]
+	path = JAnim
+	url = https://github.com/jkjkil4/JAnim
+[submodule "manimce"]
+	path = manimce
+	url = https://github.com/ManimCommunity/manim
