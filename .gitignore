@@ -1,6 +1,8 @@
 output/
 .direnv/
 latex_cache
+.ruff_cache
+benchmark.pdf
 
 # Python-generated files
 __pycache__/
