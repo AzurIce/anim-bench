@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 
 [[package]]
@@ -461,6 +461,7 @@ gui = [
 
 [package.metadata]
 requires-dist = [
+    { name = "asv", marker = "extra == 'bench'" },
     { name = "attrs" },
     { name = "beautifulsoup4", marker = "extra == 'gui'" },
     { name = "colour" },
@@ -490,7 +491,7 @@ requires-dist = [
     { name = "tqdm" },
     { name = "typst", specifier = ">=0.14.1" },
 ]
-provides-extras = ["doc", "gui", "test"]
+provides-extras = ["bench", "doc", "gui", "test"]
 
 [[package]]
 name = "jedi"
@@ -565,7 +566,7 @@ wheels = [
 
 [[package]]
 name = "manim"
-version = "0.20.0"
+version = "0.20.1"
 source = { editable = "manimce" }
 dependencies = [
     { name = "audioop-lts" },

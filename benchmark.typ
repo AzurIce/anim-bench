@@ -1,5 +1,7 @@
 #import "@preview/lilaq:0.3.0" as lq
 
+#set page(flipped: true)
+
 #let engines = ("Manim", "JAnim", "Ranim", "ManimCE")
 
 #let engine_colors = (
