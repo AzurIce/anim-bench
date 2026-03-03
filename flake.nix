@@ -39,7 +39,7 @@
         inherit (nixpkgs) lib;
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
-        rust-tools = pkgs.rust-bin.nightly.latest.default.override {
+        rust-tools = pkgs.rust-bin.nightly."2026-01-01".default.override {
           extensions = [ "rust-src" ];
         };
 
@@ -54,7 +54,12 @@
           # It is of course perfectly OK to keep using an impure virtualenv workflow and only use uv2nix to build packages.
           # This devShell simply adds Python and undoes the dependency leakage done by Nixpkgs Python infrastructure.
           pkgs.mkShell rec {
-            buildInputs = (
+            buildInputs = [
+              pkgs.cairo
+              pkgs.pango
+              pkgs.portaudio
+            ]
+            ++ (
               with pkgs;
               pkgs.lib.optionals pkgs.stdenv.isLinux [
                 libGL
@@ -68,21 +73,20 @@
               ]
             );
             packages =
+              let
+                tex = pkgs.texlive.combine {
+                  inherit (pkgs.texlive) scheme-medium standalone preview;
+                };
+              in
               with pkgs;
               [
-                # clang
-                # llvmPackages_17.bintools
-                # libusb1
-                # openssl
                 pkg-config
                 uv
-                cairo
-                portaudio
                 ninja
-                pango
                 ffmpeg
                 typst
                 vulkan-tools
+                tex
               ]
               ++ [
                 python
@@ -90,19 +94,20 @@
               ];
 
             env = {
-              # Prevent uv from managing Python downloads
               UV_PYTHON_DOWNLOADS = "never";
-              # Force uv to use nixpkgs Python interpreter
               UV_PYTHON = python.interpreter;
             }
             // lib.optionalAttrs pkgs.stdenv.isLinux {
-              # Python libraries often load native shared objects using dlopen(3).
-              # Setting LD_LIBRARY_PATH makes the dynamic library loader aware of libraries without using RPATH for lookup.
               LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
             };
             shellHook = ''
               unset PYTHONPATH
-              export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${toString (pkgs.lib.makeLibraryPath buildInputs)}"
+              ${lib.optionalString pkgs.stdenv.isLinux ''
+                export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${toString (pkgs.lib.makeLibraryPath buildInputs)}"
+              ''}
+              ${lib.optionalString pkgs.stdenv.isDarwin ''
+                export DYLD_LIBRARY_PATH="${toString (pkgs.lib.makeLibraryPath buildInputs)}"
+              ''}
             '';
           };
       }

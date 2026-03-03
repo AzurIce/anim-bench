@@ -1,16 +1,19 @@
 use itertools::Itertools;
-use ranim::{color::palettes::manim::RED_C, core::animation::StaticAnim};
-use std::f64::consts::TAU;
+use ranim::{
+    color::palettes::manim::RED_C, core::animation::StaticAnim,
+    items::vitem::geometry::anchor::Origin,
+};
+use std::f64::consts::{PI, TAU};
 
 use ranim::{
     anims::morph::MorphAnim,
     color::palettes::manim,
-    glam::{usizevec3, DVec3},
+    glam::{DVec3, usizevec3},
     items::vitem::{
+        VItem,
         geometry::{Circle, Square},
         svg::SvgItem,
         typst::typst_svg,
-        VItem,
     },
     prelude::*,
 };
@@ -185,7 +188,8 @@ pub fn transform_squares(r: &mut RanimScene, n: usize) {
         .map(|(i, j)| {
             Circle::new(size / 2.0).with(|c| {
                 c.set_stroke_color(RED_C)
-                    .move_to(start + unit * DVec3::X * j as f64 + unit * DVec3::Y * i as f64);
+                    .move_to(start + unit * DVec3::X * j as f64 + unit * DVec3::Y * i as f64)
+                    .with_origin(Origin, |x| x.rotate_on_z(-PI).discard());
             })
         })
         .map(VItem::from)
